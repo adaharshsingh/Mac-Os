@@ -3,8 +3,10 @@ import { dockApps } from '#constants'
 import { Tooltip } from 'react-tooltip'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
+import useWindowStore from '#store/window'
 
 const Dock = () => {
+    const {openWindow, closeWindow, windows} = useWindowStore();
     const dockRef = useRef(null)
 
     useGSAP(()=>{
@@ -47,8 +49,15 @@ const Dock = () => {
             dock.removeEventListener("mouseleave",resetIcons);
         }
     },[])
-    const toggleApp = ({ canOpen }) => {
-        if (!canOpen) return;
+    const toggleApp = ({ app }) => {
+        if (!app.canOpen) return;
+        const window =windows[app.id];
+        if (window.isOpen) {
+            closeWindow(app.id);
+        } else {
+            openWindow(app.id);
+        }
+        console.log(windows);
     }
   return (
     <section id="dock">
@@ -60,7 +69,7 @@ const Dock = () => {
                     data-tooltip-content={name}
                     data-tooltip-delay-show={150}
                     disabled={!canOpen}
-                    onClick={()=>toggleApp({canOpen})}>
+                    onClick={()=>toggleApp({app: { id, name, icon, canOpen }})}>
                         <img src={`/images/${icon}`} alt={name} loading="lazy" className={canOpen?"":"opacity-60"} />
 
                     </button>
