@@ -1,7 +1,7 @@
 import WindowControls from '#components/WindowControls';
 import { techStack } from '#constants';
 import WindowWrapper from '#hoc/WindowWrapper'
-import { Flag } from 'lucide-react';
+import { Check, Flag } from 'lucide-react';
 import React from 'react'
 
 
@@ -27,7 +27,7 @@ const Terminal = () => {
     <ul className='content'>
         {techStack.map(({ category, items})=>(
             <li key={category} className='flex items-center'>
-                <check className='check' size={20}/>
+                <Check className='check' size={20}/>
                     <h3>{category}</h3>
                     <ul>
                         {items.map((item,i)=>(
@@ -39,7 +39,7 @@ const Terminal = () => {
     </ul>
     <div className='footnote'>
         <p>
-            <check size={20} /> 5 of 5 stack loaded succesfully(100%)
+            <Check size={20} /> 5 of 5 stack loaded succesfully(100%)
         </p>
         <p className='text-black'>
             <Flag size={15} fill='black' />

@@ -13,6 +13,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' stroke='black' stroke-width='1' d='M5.5 3L3 21l7.5-5 3.5 7 3-1.5-3.5-7 7.5-.5z'/%3E%3C/svg%3E") 4 4, auto;
 }
 
 @theme {
@@ -65,7 +66,15 @@ body {
 
 @layer components {
   .icon {
-    @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
+   
+
+  button, a, [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' stroke='black' stroke-width='1.5' d='M12 3l3 3h-2v5h5v-2l3 3-3 3v-2h-5v5h2l-3 3-3-3h2v-5H6v2l-3-3 3-3v2h5V6H9z'/%3E%3C/svg%3E") 12 12, pointer;
+  }
+
+  input, textarea {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'%3E%3Crect x='9' y='0' width='2' height='24' fill='black'/%3E%3C/svg%3E") 10 12, text;
+  } @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
   }
 
   #welcome {
@@ -268,14 +277,16 @@ body {
     }
 
     .gallery {
-      @apply p-5;
+      @apply p-8;
 
       ul {
-        @apply grid grid-cols-5 grid-rows-5 gap-2.5;
+        @apply grid grid-cols-5 grid-rows-5 gap-4;
 
         li {
+          @apply overflow-hidden rounded-lg shadow-sm;
+          
           img {
-            @apply size-full object-cover rounded-lg;
+            @apply size-full object-cover transition-transform duration-300 hover:scale-105;
           }
 
           &:first-child {
