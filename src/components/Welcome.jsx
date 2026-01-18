@@ -61,8 +61,12 @@ const Welcome = () => {
     },[])
   return (
     <section id='welcome'>
-        <p ref={subtitleRef}>{renderText("Hey, I'm Adarsh! Welcome to my","text-3xl font-georama",100)} </p>
-        <h1 ref={titleRef} className='mt-7'>{renderText("MacBook","text-9xl italic font-georama",400)}</h1>
+        <p ref={subtitleRef} style={{fontFamily: 'Georama, sans-serif'}}>
+          {renderText("Hey, I'm Adarsh! Welcome to my","text-3xl",100)}
+        </p>
+        <h1 ref={titleRef} className='mt-7' style={{fontFamily: 'Georama, sans-serif'}}>
+          {renderText("MacBook","text-9xl italic",400)}
+        </h1>
         <div className='small-screen'>
             <p>For the best experience, please use a larger screen device.</p>
         </div>
