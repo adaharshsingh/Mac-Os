@@ -49,20 +49,20 @@ const setTextHover=(container,type)=>{
 
 const Welcome = () => {
     
-    const tittleRef = useRef(null)
+    const titleRef = useRef(null)
     const subtitleRef = useRef(null)
     useGSAP(()=>{
-        const titleCleanUp=setTextHover(tittleRef.current,'title');
+        const titleCleanUp=setTextHover(titleRef.current,'title');
         const subtitleCleanUp =setTextHover(subtitleRef.current,'subtitle');
         return ()=>{
-           titleCleanUp();
-             subtitleCleanUp();
+           if(titleCleanUp) titleCleanUp();
+           if(subtitleCleanUp) subtitleCleanUp();
         }
     },[])
   return (
     <section id='welcome'>
         <p ref={subtitleRef}>{renderText("Hey, I'm Adarsh! Welcome to my","text-3xl font-georama",100)} </p>
-        <h1 ref={tittleRef} className='mt-7'>{renderText("MacBook","text-9xl italic font-georama")}</h1>
+        <h1 ref={titleRef} className='mt-7'>{renderText("MacBook","text-9xl italic font-georama",400)}</h1>
         <div className='small-screen'>
             <p>For the best experience, please use a larger screen device.</p>
         </div>
